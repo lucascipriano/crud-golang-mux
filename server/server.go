@@ -4,7 +4,7 @@ import (
 	"connectDB/database"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strconv"
 
@@ -19,7 +19,7 @@ type user struct {
 
 // Craete User, inset into db
 func CreateUser(w http.ResponseWriter, r *http.Request) {
-	bodyRequest, erro := ioutil.ReadAll(r.Body)
+	bodyRequest, erro := io.ReadAll(r.Body)
 	if erro != nil {
 		w.Write([]byte("Falha ao ler o corpo da requisição!"))
 		return
@@ -134,7 +134,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Erro ao converter param para interior"))
 		return
 	}
-	bodyRequest, erro := ioutil.ReadAll(r.Body)
+	bodyRequest, erro := io.ReadAll(r.Body)
 	if erro != nil {
 		w.Write([]byte("Erro ao ler requisição"))
 		return

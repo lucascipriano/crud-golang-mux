@@ -3,3 +3,4 @@
 	user: golang, 
     pass: golang,
     database: devbook
+
